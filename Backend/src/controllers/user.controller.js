@@ -37,7 +37,7 @@ const registerUser = async function(req,res){
             sameSite: "None", 
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
-        
+
         delete user._doc.password;
 
         res.status(201).json({
