@@ -9,8 +9,8 @@ const Register = () => {
 
   return (
     <div className='w-full h-screen flex flex-col gap-4 items-center justify-center'>
-        <h2>Register User</h2>
-        <form className='flex flex-col gap-3 w-[400px]'>
+        <h2 className='text-2xl font-semibold'>Register User</h2>
+        <form className='flex flex-col gap-4 w-[400px]'>
             <input 
                 type="text" 
                 placeholder='Enter username' 

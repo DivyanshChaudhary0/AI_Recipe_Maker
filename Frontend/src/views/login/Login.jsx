@@ -8,7 +8,7 @@ const Login = () => {
 
   return (
     <div className='w-full h-screen flex flex-col gap-4 items-center justify-center'>
-        <h2>Login User</h2>
+        <h2 className='text-2xl font-semibold'>Login User</h2>
         <form className='flex flex-col gap-3 w-[400px]'>
             <input 
                 type="text"  
@@ -24,7 +24,9 @@ const Login = () => {
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)} 
             />
-            <button className='px-2 py-2 bg-blue-500 hover:bg-blue-600 transition-all text-white rounded-xl cursor-pointer'>Login</button>
+            <button className='px-2 py-2 bg-blue-500 hover:bg-blue-600 transition-all text-white rounded-xl cursor-pointer'>
+                Login
+            </button>
         </form>
     </div>
   )
