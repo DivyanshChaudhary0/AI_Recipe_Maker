@@ -12,7 +12,7 @@ const Register = () => {
     function handleSubmit(e){
         e.preventDefault();
 
-        axios.post( BASE_URL + "/api/v1/register",{username,email,password},{ withCredentials: true })
+        axios.post( BASE_URL + "/api/v1/user/register",{username,email,password},{ withCredentials: true })
         .then((res) => {
             console.log(res);
         })
