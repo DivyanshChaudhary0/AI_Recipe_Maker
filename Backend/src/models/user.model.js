@@ -1,7 +1,7 @@
 
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const config = require("../config/config");
 
 
@@ -43,7 +43,7 @@ userSchema.statics.verifyToken = function(token){
 
 userSchema.statics.hashPassword = async function(password){
     const genSalt = await bcrypt.genSalt(10);
-    return await bcrypt(password,genSalt);
+    return await bcrypt.hash(password,genSalt);
 }
 
 userSchema.methods.comparePassword = async function(inputPassword){
