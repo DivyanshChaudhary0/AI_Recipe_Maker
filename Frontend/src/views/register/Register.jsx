@@ -1,5 +1,7 @@
 
 import { useState } from 'react'
+import axios from "axios"
+import { BASE_URL } from '../../utils/constants';
 
 const Register = () => {
 
@@ -7,10 +9,22 @@ const Register = () => {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
 
+    function handleSubmit(e){
+        e.preventDefault();
+
+        axios.post( BASE_URL + "/api/v1/register",{username,email,password},{ withCredentials: true })
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+
   return (
     <div className='w-full h-screen flex flex-col gap-4 items-center justify-center'>
         <h2 className='text-2xl font-semibold'>Register User</h2>
-        <form className='flex flex-col gap-4 w-[400px]'>
+        <form className='flex flex-col gap-4 w-[400px]' onSubmit={handleSubmit} >
             <input 
                 type="text" 
                 placeholder='Enter username' 
