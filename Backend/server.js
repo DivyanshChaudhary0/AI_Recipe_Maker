@@ -1,8 +1,12 @@
 
 const app = require("./src/app");
+const dotenv = require("dotenv")
+dotenv.config();
 
-let port = 3000
+const config = require("./src/config/config");
+
+let port = config.PORT
 
 app.listen(port, function(){
-    console.log("app is running on port" + port);
+    console.log("app is running on port " + port);
 })
