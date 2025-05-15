@@ -37,6 +37,8 @@ const registerUser = async function(req,res){
             sameSite: "None", 
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
+        
+        delete user._doc.password;
 
         res.status(201).json({
             message: "User created successfully",
@@ -54,7 +56,36 @@ const registerUser = async function(req,res){
 
 const loginUser = async function(req,res){
     try{
-        
+        const {email,password} = req.body;
+        if(!email || !password){
+            return res.status(400).json({
+                message: "Please fill all data"
+            })
+        }
+
+        const user = await userModel.findOne({email}).select("+password");
+
+        if(!user){
+            return res.status(404).json({
+                message: "Invalid email or password"
+            })
+        }
+
+        const isMatched = user.comparePassword(password);
+
+        if(!isMatched){
+            return res.status(404).json({
+                message: "Invalid email or password"
+            })
+        }
+
+        delete user._doc.password;
+
+        res.status(200).json({
+            user,
+            message: "User logged in"
+        })
+
     }
     catch(err){
         res.status(500).json({
