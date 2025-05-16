@@ -95,7 +95,20 @@ const loginUser = async function(req,res){
     }
 }
 
+const getUser = async function(req,res){
+    try{
+
+    }
+    catch(err){
+        res.status(500).json({
+            error: err.message,
+            message: "Internal server error"
+        })
+    }
+}
+
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    getUser
 }
