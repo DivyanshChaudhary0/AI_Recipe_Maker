@@ -2,19 +2,22 @@
 import { useState } from 'react'
 import axios from "axios"
 import { BASE_URL } from '../../utils/constants';
+import { useDispatch } from "react-redux"
+import { addUser } from '../../store/userSlice';
 
 const Register = () => {
 
     const [username,setUsername] = useState("");
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
+    const dispatch = useDispatch();
 
     function handleSubmit(e){
         e.preventDefault();
 
         axios.post( BASE_URL + "/api/v1/user/register",{username,email,password},{ withCredentials: true })
         .then((res) => {
-            console.log(res);
+            dispatch(addUser(res?.data?.user))
         })
         .catch((err) => {
             console.log(err);

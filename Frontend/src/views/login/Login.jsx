@@ -2,11 +2,13 @@
 import axios from 'axios';
 import { useState } from 'react'
 import { BASE_URL } from '../../utils/constants';
+import { useDispatch } from "react-redux"
 
 const Login = () => {
 
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
+    const dispatch = useDispatch();
 
     function handleLogin(e){
         e.preventDefault();
@@ -14,6 +16,7 @@ const Login = () => {
         axios.post(BASE_URL + "/api/v1/user/login", { email,password } ,{ withCredentials: true })
         .then((res) => {
             console.log(res);
+            dispatch(addUser(res?.data?.user))
         })
         .catch((err) => {
             console.log(err.message);
