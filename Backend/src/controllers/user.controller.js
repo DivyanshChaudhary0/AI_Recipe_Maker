@@ -97,7 +97,14 @@ const loginUser = async function(req,res){
 
 const getUser = async function(req,res){
     try{
+        const id = req.user._id;
 
+        const user = await userModel.findById(id);
+
+        res.status(200).json({
+            user,
+            message: "User fetched ..."
+        })
     }
     catch(err){
         res.status(500).json({
