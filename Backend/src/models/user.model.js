@@ -47,7 +47,7 @@ userSchema.statics.hashPassword = async function(password){
 }
 
 userSchema.methods.comparePassword = async function(inputPassword){
-    if(inputPassword){
+    if(!inputPassword){
         throw new Error("Password is required");
     }
 

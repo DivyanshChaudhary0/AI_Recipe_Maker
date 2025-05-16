@@ -4,6 +4,7 @@ import axios from "axios"
 import { BASE_URL } from '../../utils/constants';
 import { useDispatch } from "react-redux"
 import { addUser } from '../../store/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
@@ -11,6 +12,7 @@ const Register = () => {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     function handleSubmit(e){
         e.preventDefault();
@@ -18,6 +20,7 @@ const Register = () => {
         axios.post( BASE_URL + "/api/v1/user/register",{username,email,password},{ withCredentials: true })
         .then((res) => {
             dispatch(addUser(res?.data?.user))
+            navigate("/");
         })
         .catch((err) => {
             console.log(err);
