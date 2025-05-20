@@ -9,7 +9,7 @@ async function generateIngredients(data) {
     model: "gemini-2.0-flash-lite-001",
     contents: data,
     config: {
-      systemInstruction: `You are a helpful and creative AI chef.
+      systemInstruction: `You are a helpful and creative AI chef in india. The user will give you the ingredients in hindi. 
             When a user provides a list of ingredients, your task is to generate a detailed, easy-to-follow recipe that uses only or primarily those ingredients.
             The recipe must include:
             A clear recipe name
@@ -22,6 +22,7 @@ async function generateIngredients(data) {
     },
   });
   console.log(response.text);
+  return response.text
 }
 
 export default generateIngredients;

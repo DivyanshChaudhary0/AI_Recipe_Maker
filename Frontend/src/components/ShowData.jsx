@@ -1,5 +1,18 @@
 
+import axios from "axios"
+import { BASE_URL } from "../utils/constants"
+
 const ShowData = ({data,deleteHandler}) => {
+
+    const submitData = () => {
+        axios.post(BASE_URL + "/api/v1/recipe/generate",{data},{withCredentials:true})
+        .then((res) => {
+            console.log(res.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
 
   return (
     <div className="w-full lg:w-[32%] lg:mx-auto rounded px-4">
@@ -10,7 +23,7 @@ const ShowData = ({data,deleteHandler}) => {
             </div>
         ))}
 
-        {data.length > 0 && <button  className="mt-6 bg-gray-200 w-full rounded py-1 cursor-pointer font-semibold">Submit</button>}
+        {data.length > 0 && <button onClick={submitData} className="mt-6 bg-gray-200 w-full rounded py-1 cursor-pointer font-semibold">Submit</button>}
     </div>
   )
 }
