@@ -2,7 +2,7 @@
 const ShowData = ({data,deleteHandler}) => {
 
   return (
-    <div className="w-[32%] mx-auto rounded">
+    <div className="w-full lg:w-[32%] lg:mx-auto rounded px-4">
         {data.map((value,index) => (
             <div key={index} className="flex items-center gap-2 px-6 py-2 justify-between bg-gray-100 mt-2" >
                 <p>{value}</p>

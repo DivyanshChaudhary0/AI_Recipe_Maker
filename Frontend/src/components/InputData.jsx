@@ -9,7 +9,7 @@ const InputData = ({input,setInput,handleData}) => {
           type="text" 
           placeholder="Add food" 
         />
-        <button onClick={handleData} className="px-8 py-2 text-white rounded bg-blue-500 hover:bg-blue-600 transition-all cursor-pointer">Add</button>
+        <button onClick={handleData} className="px-8 py-2 mt-2 text-white rounded bg-blue-500 hover:bg-blue-600 transition-all cursor-pointer">Add</button>
     </div>
   )
 }
