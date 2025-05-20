@@ -2,6 +2,7 @@
 import { useState } from "react";
 import {useSelector} from "react-redux"
 import ShowData from "../../components/ShowData";
+import InputData from "../../components/InputData";
 
 const Home = () => {
 
@@ -10,25 +11,21 @@ const Home = () => {
   const [data, setData] = useState([]);
 
   const handleData = () => {
+    if(input.length <= 0) return;
     let newData = [...data,input];
     setData(newData);
     setInput("");
   }
 
+   const deleteHandler = (idx) => {
+    setData((prev) => prev.filter((val,index) => idx !== index))
+  }
+
   return (
     <div className="w-full text-center mt-20">
       <p className="py-4">Welcome <span className="text-3xl "> {"____" + user?.username.toUpperCase()}</span> </p>
-      <div className="input-form mt-2">
-        <input 
-          className="w-96 px-4 py-2 border border-black rounded mx-4"
-          value={input}  
-          onChange={(e) => setInput(e.target.value)} 
-          type="text" 
-          placeholder="Add food" 
-        />
-        <button onClick={handleData} className="px-8 py-2 text-white rounded bg-blue-500 hover:bg-blue-600 transition-all cursor-pointer">Add</button>
-      </div>
-      <ShowData data={data} />
+      <InputData input={input} setInput={setInput} handleData={handleData} />
+      <ShowData data={data} deleteHandler={deleteHandler} />
     </div>
   )
 }
