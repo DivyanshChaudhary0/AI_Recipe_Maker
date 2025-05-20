@@ -1,13 +1,17 @@
 
 import axios from "axios"
 import { BASE_URL } from "../utils/constants"
+import {useDispatch} from "react-redux"
+import { addRecipe } from "../store/recipeSlice";
 
 const ShowData = ({data,deleteHandler}) => {
+    const dispatch = useDispatch();
 
     const submitData = () => {
         axios.post(BASE_URL + "/api/v1/recipe/generate",{data},{withCredentials:true})
         .then((res) => {
             console.log(res.data);
+            dispatch(addRecipe(res.data.recipe))
         })
         .catch((err) => {
             console.log(err);

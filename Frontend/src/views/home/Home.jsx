@@ -3,6 +3,7 @@ import { useState } from "react";
 import {useSelector} from "react-redux"
 import ShowData from "../../components/ShowData";
 import InputData from "../../components/InputData";
+import ShowRecipe from "../../components/ShowRecipe";
 
 const Home = () => {
 
@@ -26,6 +27,7 @@ const Home = () => {
       <p className="py-4">Welcome <span className="text-3xl "> {"____" + user?.username.toUpperCase()}</span> </p>
       <InputData input={input} setInput={setInput} handleData={handleData} />
       <ShowData data={data} deleteHandler={deleteHandler} />
+      <ShowRecipe />
     </div>
   )
 }
