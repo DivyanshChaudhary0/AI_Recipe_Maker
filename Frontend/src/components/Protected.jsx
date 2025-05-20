@@ -10,7 +10,6 @@ const Protected = ({children}) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-
         axios.get(BASE_URL + "/api/v1/user/me", { withCredentials: true })
         .then((res) => {
             dispatch(addUser(res.data.user));
