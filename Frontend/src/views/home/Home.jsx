@@ -8,6 +8,7 @@ import ShowRecipe from "../../components/ShowRecipe";
 const Home = () => {
 
   const user = useSelector((state) => state.user);
+  const recipe = useSelector((state) => state.recipe);
   const [input, setInput] = useState("");
   const [data, setData] = useState([]);
 
@@ -27,7 +28,7 @@ const Home = () => {
       <p className="py-4">Welcome <span className="text-3xl "> {"____" + user?.username.toUpperCase()}</span> </p>
       <InputData input={input} setInput={setInput} handleData={handleData} />
       <ShowData data={data} deleteHandler={deleteHandler} />
-      <ShowRecipe />
+      { recipe && <ShowRecipe />}
     </div>
   )
 }
