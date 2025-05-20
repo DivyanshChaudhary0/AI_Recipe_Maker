@@ -1,15 +1,14 @@
+import app from "./src/app.js";
+import dotenv from "dotenv";
+import "./src/services/google.service.js";
+import connectToDB from "./src/db/db.js";
+import config from "./src/config/config.js";
 
-const app = require("./src/app");
-const dotenv = require("dotenv")
 dotenv.config();
-
-const connectToDB = require("./src/db/db");
 connectToDB();
 
-const config = require("./src/config/config");
+const port = config.PORT;
 
-let port = config.PORT
-
-app.listen(port, function(){
+app.listen(port, function () {
     console.log("app is running on port " + port);
-})
+});

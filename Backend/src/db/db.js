@@ -1,6 +1,6 @@
 
-const mongoose = require("mongoose");
-const config = require("../config/config");
+import mongoose from "mongoose";
+import config from "../config/config.js";
 
 const connectToDB = () => {
     mongoose.connect(config.MONGO_URI)
@@ -12,4 +12,4 @@ const connectToDB = () => {
     })
 }
 
-module.exports = connectToDB
+export default connectToDB

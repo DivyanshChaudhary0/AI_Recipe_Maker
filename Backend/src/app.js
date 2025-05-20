@@ -1,16 +1,16 @@
 
-const express = require("express");
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import userRoutes from "./routes/user.routes.js";
+
 const app = express();
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
-app.use(cors({origin: "*", credentials: true}));
+app.use(express.urlencoded({ extended: true }));
+app.use(cors({ origin: "*", credentials: true }));
 app.use(cookieParser());
-
-const userRoutes = require("./routes/user.routes");
 
 app.use("/api/v1/user", userRoutes);
 
-module.exports = app;
+export default app;
